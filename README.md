@@ -6,7 +6,7 @@
 
 2. Clone this repository:
     ```bash
-    git clone https://github.com/pramudya3/backend && cd backend
+    git clone git@github.com:pramudya3/backend.git && cd backend
     ```
 
    This command clones the repository from the specified GitHub URL and then navigates into the cloned repository directory.
