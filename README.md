@@ -15,7 +15,7 @@
    ```bash
    docker-compose up --build
    ```
-   
+
 5. Access the services through the defined endpoints.
 
 #### Services:
@@ -95,3 +95,11 @@
            "payment_method":"Debit"
          }
          ```
+
+#### Tech Stack:
+
+- Golang
+- Supertokens
+- GORM
+- PostgreSQL
+- Gin Gonic
