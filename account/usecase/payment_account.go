@@ -11,7 +11,7 @@ type paymentAccountUsecase struct {
 	PaymentTypeRepository domain.PaymentAccountRepository
 }
 
-// AddNewPayment implements domain.PaymentTypeUsecase.
+// AddNewPayment implements domain.PaymentAccountUsecase.
 func (p *paymentAccountUsecase) AddNewPaymentAccount(ctx context.Context, paymentType *domain.PaymentAccount) error {
 	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
 	defer cancel()
@@ -19,7 +19,7 @@ func (p *paymentAccountUsecase) AddNewPaymentAccount(ctx context.Context, paymen
 	return p.PaymentTypeRepository.AddNewPaymentAccount(ctx, paymentType)
 }
 
-// DeletePaymentAccount implements domain.PaymentTypeUsecase.
+// DeletePaymentAccount implements domain.PaymentAccountUsecase.
 func (p *paymentAccountUsecase) DeletePaymentAccount(ctx context.Context, paymentId uint64) error {
 	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
 	defer cancel()
@@ -27,7 +27,7 @@ func (p *paymentAccountUsecase) DeletePaymentAccount(ctx context.Context, paymen
 	return p.PaymentTypeRepository.DeletePaymentAccount(ctx, paymentId)
 }
 
-// FetchPaymentAccount implements domain.PaymentTypeUsecase.
+// FetchPaymentAccount implements domain.PaymentAccountUsecase.
 func (p *paymentAccountUsecase) FetchPaymentAccount(ctx context.Context, accountId uint64) ([]*domain.PaymentAccount, error) {
 	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
 	defer cancel()
@@ -35,7 +35,7 @@ func (p *paymentAccountUsecase) FetchPaymentAccount(ctx context.Context, account
 	return p.PaymentTypeRepository.FetchPaymentAccount(ctx, accountId)
 }
 
-// UpdatePaymentAccount implements domain.PaymentTypeUsecase.
+// UpdatePaymentAccount implements domain.PaymentAccountUsecase.
 func (p *paymentAccountUsecase) UpdatePaymentAccount(ctx context.Context, payment *domain.PaymentAccount) error {
 	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
 	defer cancel()
@@ -43,7 +43,7 @@ func (p *paymentAccountUsecase) UpdatePaymentAccount(ctx context.Context, paymen
 	return p.PaymentTypeRepository.UpdatePaymentAccount(ctx, payment)
 }
 
-func NewPaymentTypeUsecase(par domain.PaymentAccountRepository) domain.PaymentAccountUsecase {
+func NewPaymentAccountUsecase(par domain.PaymentAccountRepository) domain.PaymentAccountUsecase {
 	return &paymentAccountUsecase{
 		PaymentTypeRepository: par,
 	}

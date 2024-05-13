@@ -33,7 +33,7 @@ func signupRoutes(db *gorm.DB, g *gin.RouterGroup) {
 	paymentRepo := repository.NewPaymentAccountRepository(db)
 	userRepo := repository.NewUserRepository(db)
 	usecase := usecase.NewUserUsecase(userRepo, paymentRepo)
-	uc := handler.NewHandlerUser(usecase)
+	uc := handler.NewUserHandler(usecase)
 
 	g.POST("/signup", uc.Signup())
 	g.POST("/login", uc.Login())
@@ -43,7 +43,7 @@ func userRoutes(db *gorm.DB, g *gin.RouterGroup) {
 	paymentRepo := repository.NewPaymentAccountRepository(db)
 	userRepo := repository.NewUserRepository(db)
 	usecase := usecase.NewUserUsecase(userRepo, paymentRepo)
-	uc := handler.NewHandlerUser(usecase)
+	uc := handler.NewUserHandler(usecase)
 
 	g.GET("/my-profile", uc.FindByUsername())
 	g.GET("/logout", uc.Logout())
@@ -51,7 +51,7 @@ func userRoutes(db *gorm.DB, g *gin.RouterGroup) {
 
 func paymentAccountRoutes(db *gorm.DB, g *gin.RouterGroup) {
 	repo := repository.NewPaymentAccountRepository(db)
-	usecase := usecase.NewPaymentTypeUsecase(repo)
+	usecase := usecase.NewPaymentAccountUsecase(repo)
 	uc := handler.NewpaymentAccountHandler(usecase)
 
 	g.POST("/", uc.CreatePaymentAccount())
@@ -59,7 +59,7 @@ func paymentAccountRoutes(db *gorm.DB, g *gin.RouterGroup) {
 
 func paymentHistoryRoutes(db *gorm.DB, g *gin.RouterGroup) {
 	repo := repository.NewTransactionRepository(db)
-	usecase := usecase.NewPaymentHistoryUsecase(repo)
+	usecase := usecase.NewTransactionUsecase(repo)
 	uc := handler.NewTransactionHandler(usecase)
 
 	g.GET("/", uc.Fetch())

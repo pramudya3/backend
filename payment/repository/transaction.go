@@ -12,7 +12,7 @@ type transactionRepository struct {
 	DB *gorm.DB
 }
 
-// FetchHistory implements domain.HistoryRepository.
+// FetchHistory implements domain.TransactionRepository.
 func (t *transactionRepository) CreateRecord(ctx context.Context, history *domain.Transaction) error {
 	if err := t.DB.Create(history).Error; err != nil {
 		return err

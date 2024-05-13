@@ -12,7 +12,7 @@ type transactionRepository struct {
 	DB *gorm.DB
 }
 
-// FetchHistory implements domain.HistoryRepository.
+// FetchHistory implements domain.TransactionRepository.
 func (h *transactionRepository) FetchTransaction(ctx context.Context, userId uint64) ([]*domain.Transaction, error) {
 	histories := []*domain.Transaction{}
 	res := h.DB.Find(&histories, "user_id = ?", userId)

@@ -17,7 +17,7 @@ type userHandler struct {
 	uc domain.UserUsecase
 }
 
-func NewHandlerUser(userUsecase domain.UserUsecase) *userHandler {
+func NewUserHandler(userUsecase domain.UserUsecase) *userHandler {
 	return &userHandler{
 		uc: userUsecase,
 	}
